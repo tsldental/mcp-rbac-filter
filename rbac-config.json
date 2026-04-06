@@ -1,0 +1,27 @@
+{
+  "_comment": "Map Entra ID app role names (or scp scopes) to allowed MCP tool names. Use '*' for unrestricted access.",
+
+  "admin": ["*"],
+
+  "developer": [
+    "get-alerts",
+    "get-forecast",
+    "create-ticket",
+    "update-ticket",
+    "list-tickets",
+    "get-logs",
+    "deploy-service"
+  ],
+
+  "analyst": [
+    "get-forecast",
+    "list-tickets",
+    "get-report",
+    "get-alerts"
+  ],
+
+  "intern": [
+    "get-alerts",
+    "get-forecast"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "mcp-rbac-filter",
+  "version": "1.0.0",
+  "description": "RBAC security middleware/proxy that filters MCP tools/list responses based on Entra ID roles",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.0",
+    "dotenv": "^16.4.0",
+    "express": "^4.19.0"
+  }
+}
