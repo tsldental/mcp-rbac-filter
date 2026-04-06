@@ -21,7 +21,24 @@
   ],
 
   "intern": [
-    "get-alerts",
-    "get-forecast"
-  ]
+    "get-alerts"
+  ],
+
+  "_comment2": "Roles for hackathon-mcp-functions (github.com/paulyuk/hackathon-mcp-functions)",
+
+  "HackathonParticipant": [
+    "save_submission",
+    "list_submissions",
+    "save_vote",
+    "list_votes"
+  ],
+
+  "HackathonJudge": [
+    "list_submissions",
+    "list_all_submissions",
+    "list_votes",
+    "save_vote"
+  ],
+
+  "HackathonAdmin": ["*"]
 }
