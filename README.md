@@ -50,6 +50,54 @@ The AI only ever sees and can invoke the tools its role permits. Restricted tool
 
 ---
 
+## Demo (no Azure required)
+
+Run a fully self-contained end-to-end demo in seconds — no Azure, no Entra ID, no credentials needed.
+It spins up a mock upstream using the real tool names from both
+[node-mcp-sdk-functions-hosting](https://github.com/paulyuk/node-mcp-sdk-functions-hosting) and
+[hackathon-mcp-functions](https://github.com/paulyuk/hackathon-mcp-functions), starts the proxy,
+and fires requests as six different roles.
+
+```bash
+git clone https://github.com/tsldental/mcp-rbac-filter
+cd mcp-rbac-filter
+npm install
+npm run demo
+```
+
+Expected output:
+
+```
+  mcp-rbac-filter  —  live end-to-end demo
+  Using paulyuk/node-mcp-sdk-functions-hosting + hackathon-mcp-functions tools
+
+════════════════════════════════════════════════════════════
+  tools/list  —  what each role sees through the proxy
+════════════════════════════════════════════════════════════
+
+  Upstream exposes 10 tools: get-alerts, get-forecast, list_users,
+  get_user_sessions, create_user, save_submission, list_submissions,
+  list_all_submissions, save_vote, list_votes
+
+  admin                    → 10 tool(s): [all]
+  HackathonAdmin           → 10 tool(s): [all]
+  HackathonJudge           →  4 tool(s): list_submissions, list_all_submissions, save_vote, list_votes
+  HackathonParticipant     →  4 tool(s): save_submission, list_submissions, save_vote, list_votes
+  intern                   →  1 tool(s): get-alerts
+  (no token / anonymous)   →  0 tool(s): (none)
+
+════════════════════════════════════════════════════════════
+  tools/call  —  enforcement (intern trying forbidden tools)
+════════════════════════════════════════════════════════════
+
+  ✔ allowed   intern → get-alerts
+  ✘ blocked   intern → get-forecast          — Access denied
+  ✘ blocked   intern → list_all_submissions  — Access denied
+  ✘ blocked   intern → create_user           — Access denied
+```
+
+---
+
 ## Quick Start
 
 ```bash
